@@ -43,3 +43,4 @@ config.local.json
 
 # Build Directory
 dist
+frontend
