@@ -8,7 +8,7 @@
 
 ```
 git clone https://github.com/anonimowy891/piggybank
-cd collectibles/blockchain/
+cd piggybank/blockchain/
 npm i
 ```
 
