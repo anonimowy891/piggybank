@@ -27,7 +27,7 @@ export class UnlockDefiAsset extends BaseAsset {
 		if (stateStore.chain.lastBlockHeaders[0].height >= recipient.defi.end)
 		{
 
-			if ((recipient.defi.end - recipient.defi.start)>=1000){
+			if ((recipient.defi.end - recipient.defi.start)>=1000){ 
 			await reducerHandler.invoke("token:credit", {address: transaction.senderAddress, amount: (recipient.defi.locked * BigInt(105))/BigInt(100)})
 			recipient.defi.start = 0;
 			recipient.defi.end = 0;
