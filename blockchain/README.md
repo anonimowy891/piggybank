@@ -1,33 +1,23 @@
-# Getting Started with Lisk Blockchain Client
+# PiggyBank - Blockchain
 
-This project was bootstrapped with [Lisk SDK](https://github.com/LiskHQ/lisk-sdk)
+### Requirements
 
-### Start a node
-```
-./bin/run start
-```
+- Node v12.21.0
 
-### Add a new module
+### Installation
+
 ```
-lisk generate:module ModuleName ModuleID
-// Example
-lisk generate:module token 1
+git clone https://github.com/anonimowy891/piggybank
+cd collectibles/blockchain/
+npm i
 ```
 
-### Add a new asset
+### Usage
+
+#### Start Node
+
 ```
-lisk generate:asset ModuleName AssetName AssetID
-// Example
-lisk generate:asset token transfer 1
+./bin/run start --enable-http-api-plugin --http-api-plugin-port 4000  --http-api-plugin-whitelist 0.0.0.0/0
 ```
 
-### Add a new plugin
-```
-lisk generate:plugin PluginAlias
-// Example
-lisk generate:plugin httpAPI
-```
 
-## Learn More
-
-You can learn more in the [documentation](https://lisk.io/documentation/lisk-sdk/index.html).
