@@ -1,5 +1,5 @@
 # PiggyBank
 
 
-[PiggyBank Backend](backend)  
+[PiggyBank Blockchain](blockchain)  
 [PiggyBank Frontend](front)
