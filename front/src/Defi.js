@@ -55,11 +55,15 @@ const Defi = () => {
         });
     };
 
+    const acc = JSON.parse(sessionStorage.getItem('Account'));
+
     const pass = (sessionStorage.getItem('Passphrase'));
 
     const reci = `Paste your address here or the recipient's address if you want to block tokens.
 `;
     const amou = `Enter here amount what you want to send.
+`;
+    const err = `You trying send more than you have.
 `;
     const bloc = `Specify the lock time of your PIG tokens (in blocks). You can also lock PIG tokens for someone else by providing their address above, only if the recipient doesn't have anything in the piggybank yet. 1 block = 10sec. 1 day ~ 8640 blocks.
 `;  
@@ -76,24 +80,37 @@ const Defi = () => {
                 </label><br></br><br></br>
                 
                 <label>
-                <Tooltip title={amou}>
+                {state.amount > acc.token.balance/100000000 ?(
+                <Tooltip title={err} >
                         <input type="text" id="amount" name="amount" onChange={handleChange} value={state.amount} placeholder="amount..."/>
                 </Tooltip>
+                ):(<Tooltip title={amou}>
+                <input type="text" id="amount" name="amount" onChange={handleChange} value={state.amount} placeholder="amount..."/>
+                </Tooltip>
+                )}
                 </label><br></br><br></br>
                 <label>
-                <Tooltip title={bloc}>
+                <Tooltip title={bloc} >
                         <input type="text" id="block" name="block" onChange={handleChange} value={state.block} placeholder="amount of block..."/> 
                 </Tooltip>
                 </label><br></br><br></br>
                 
             </form>
 
-            {!state.transaction ? (
+                {!state.transaction ? (
+
                 <div>
+                {state.amount <= acc.token.balance/100000000 && state.amount > 0 && state.address && state.block ? (
                 <Button variant="contained" onClick={handleSubmit} color="success" endIcon={<SendIcon />}>
                     Send
                 </Button>
+                ):(
+                <Button variant="contained"  color="error" endIcon={<SendIcon />}>
+                    Send
+                </Button>
+                )}
                 </div>
+
             ):(
                 <div>
                 

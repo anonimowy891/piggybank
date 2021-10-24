@@ -109,6 +109,7 @@ if (acc.defi.end == 0){
             <p>You have {acc.defi.locked/100000000} PIG ready to unlock at block: {acc.defi.end}</p>
             {state.transaction ? (
                 <div>
+                <p>Click unlock and wait few seconds.</p>
                 <Button variant="contained" onClick={handleSubmit} color="success" endIcon={<LockOpenIcon />}>
                     Unlock
                 </Button>

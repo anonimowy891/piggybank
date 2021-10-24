@@ -54,9 +54,14 @@ const Transfer = () => {
            
         });
     };
+
+    const acc = JSON.parse(sessionStorage.getItem('Account'));
+
     const reci = `Enter here recipient address who you want to send token.
 `;
     const amou = `Enter here amount what you want to send.
+`;
+    const err = `You trying send more than you have.
 `;
 
     return (
@@ -71,19 +76,31 @@ const Transfer = () => {
                 </label><br></br><br></br>
         
                 <label>
-                         <Tooltip title={amou}>
-                        <input type="text" id="amount" name="amount" onChange={handleChange} value={state.amount} placeholder="amount..."/> 
-                        </Tooltip>
+                {state.amount > acc.token.balance/100000000 ?(
+                <Tooltip title={err}>
+                        <input type="text" id="amount" name="amount" onChange={handleChange} value={state.amount} placeholder="amount..."/>
+                </Tooltip>
+                ):(<Tooltip title={amou}>
+                <input type="text" id="amount" name="amount" onChange={handleChange} value={state.amount} placeholder="amount..."/>
+                </Tooltip>
+                )}
                 </label><br></br><br></br>
                 
                
             </form>
             {!state.transaction ? (
+
                 <div>
+                 {state.amount <= acc.token.balance/100000000 && state.amount > 0 && state.address ? (
                 <Button variant="contained" onClick={handleSubmit} color="success" endIcon={<SendIcon />}>
                     Send
                 </Button>
+                ):(<Button variant="contained"  color="error" endIcon={<SendIcon />}>
+                Send
+                </Button>
+                )}
                 </div>
+
             ):(
                 <div>
                 
