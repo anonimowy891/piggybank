@@ -89,6 +89,15 @@ if (acc.defi.end == 0){
 
 
     const acc = JSON.parse(sessionStorage.getItem('Account'));
+    var time = ((acc.defi.end - nodeInfoState.height)*10);
+    var seconds = parseInt(time, 10);
+
+        var days = Math.floor(seconds / (3600*24));
+        seconds  -= days*3600*24;
+        var hrs   = Math.floor(seconds / 3600);
+        seconds  -= hrs*3600;
+        var mnts = Math.floor(seconds / 60);
+        seconds  -= mnts*60;
     
 
     return (
@@ -97,24 +106,24 @@ if (acc.defi.end == 0){
             
             <h2>Unlock</h2>
             <p>Liquidate your PiggyBank.</p>
-           
+            <p>You have {acc.defi.locked/100000000} PIG ready to unlock at block: {acc.defi.end}</p>
             {state.transaction ? (
                 <div>
                 <Button variant="contained" onClick={handleSubmit} color="success" endIcon={<LockOpenIcon />}>
                     Unlock
-                    
                 </Button>
                 </div>
             ):(
                 <div>
-                
+                {acc.defi.end ? (
+                <p>Estimate time to unlock:  {days+" days, "+hrs+" Hrs, "+mnts+" Minutes, "+seconds+" Seconds"}</p>
+                ):("")
+                }
                 <CustomButton disabled>Can't unlock</CustomButton>
-                
                 </div>
             )}
           
                 <div>
-                    <p>You have {acc.defi.locked/100000000} PIG ready to unlock at block: {acc.defi.end}</p>
                     <div style={{
                     display: "flex",
                     justifyContent: "center",

@@ -64,7 +64,7 @@ const Account = () => {
                 <p>Address: {JSON.stringify(state.account.address, null, 2)}</p> 
                 <p>Balance: {JSON.stringify(state.account.token.balance/100000000, null, 2)} PIG</p> 
                 <p>PiggyBank balance: {JSON.stringify(state.account.defi.locked/100000000, null, 2)} PIG</p> 
-                <p>Ready to unlock at: {JSON.stringify(state.account.defi.end, null, 2)}</p> 
+                <p>Ready to unlock at block: {JSON.stringify(state.account.defi.end, null, 2)}</p> 
             </div>
     )}
 
