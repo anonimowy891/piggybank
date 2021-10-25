@@ -13,8 +13,10 @@ const Unlock = () => {
     const [state, updateState] = useState({
         address: '',
         passphrase: '',
-        transaction: false
+        transaction: 0
     });
+
+    const acc = JSON.parse(sessionStorage.getItem('Account'));
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -67,28 +69,26 @@ const Unlock = () => {
     fetchData();
   }, []);
 
+
+
   useEffect(() => {
 
 if (acc.defi.end == 0){
-    updateState({
-        transaction: false,
-    });
+    
+        state.transaction = 0
+
 }else{
      if (acc.defi.end <= nodeInfoState.height)
         {
-        updateState({
-            transaction: true,
-        });
+            state.transaction = 1
         } else 
         {
-            updateState({
-                transaction: false,
-            });}}
+            state.transaction = 0
+            }}     
   });
 
 
 
-    const acc = JSON.parse(sessionStorage.getItem('Account'));
     var time = ((acc.defi.end - nodeInfoState.height)*10);
     var seconds = parseInt(time, 10);
 
