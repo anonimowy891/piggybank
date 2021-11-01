@@ -19,7 +19,7 @@ const Main =  () => {
             <p>You can also send blocked token to someone piggy bank.</p>
             <p>Unlock is possible after reach block height.</p>
             <p>Only account owner can unlock token.</p>
-            <p>Block token for 10 blocks or more and get 5% bonus.</p>
+            <p>Block token for 1000 blocks or more and get 5% bonus.</p>
 
           </Typography>
           <div style={{

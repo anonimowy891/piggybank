@@ -35,7 +35,7 @@ const Account = () => {
             account: client.account.toJSON(account),
         });
     };
-
+    const add = sessionStorage.getItem('Address');
     const addr = `Paste the address you want to see details here.
 `;
 
@@ -61,7 +61,8 @@ const Account = () => {
             </div>
     ):(
         <div >
-                <p>Address: {JSON.stringify(state.account.address, null, 2)}</p> 
+                <p>Address: {add}</p> 
+                <p>Binary Address: {state.account.address}</p> 
                 <p>Balance: {JSON.stringify(state.account.token.balance/100000000, null, 2)} PIG</p> 
                 <p>PiggyBank balance: {JSON.stringify(state.account.defi.locked/100000000, null, 2)} PIG</p> 
                 <p>Ready to unlock at block: {JSON.stringify(state.account.defi.end, null, 2)}</p> 
