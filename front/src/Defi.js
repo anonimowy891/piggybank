@@ -5,7 +5,7 @@ import sendpiggy from'./media/sendpiggy.png';
 import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
 import Tooltip from '@mui/material/Tooltip';
-
+import Alert from '@mui/material/Alert';
 
 
 
@@ -27,7 +27,7 @@ const Defi = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-
+        try {
         const client = await api.getClient();
         const address = cryptography.getAddressFromBase32Address(state.address);
         const tx = await client.transaction.create({
@@ -53,6 +53,9 @@ const Defi = () => {
             amount: '',
             block: ''
         });
+    } catch(e) {
+        alert("Incorrect address");
+      }
     };
 
     const acc = JSON.parse(sessionStorage.getItem('Account'));
@@ -64,6 +67,8 @@ const Defi = () => {
     const amou = `Enter here amount what you want to send.
 `;
     const err = `You trying send more than you have.
+`;
+    const warn = `You want to block your tokens for more than a year. Please be careful you can't undo this.
 `;
     const bloc = `Specify the lock time of your PIG tokens (in blocks). You can also lock PIG tokens for someone else by providing their address above, only if the recipient doesn't have anything in the piggybank yet. 1 block = 10sec. 1 day ~ 8640 blocks.
 `;  
@@ -81,18 +86,26 @@ const Defi = () => {
                 
                 <label>
                 {state.amount > acc.token.balance/100000000 ?(
-                <Tooltip title={err} >
-                        <input type="text" id="amount" name="amount" onChange={handleChange} value={state.amount} placeholder="amount..."/>
-                </Tooltip>
+                <Alert variant="outlined" severity="error" title={amou} >
+                        <input type="text" id="amount" name="amount" onChange={handleChange} value={state.amount} placeholder="amount..."/> {err}
+                </Alert>
                 ):(<Tooltip title={amou}>
                 <input type="text" id="amount" name="amount" onChange={handleChange} value={state.amount} placeholder="amount..."/>
                 </Tooltip>
                 )}
                 </label><br></br><br></br>
+
                 <label>
+                {state.block > 3153600 ?(
+               <Alert variant="outlined" severity="warning"
+                title={bloc} >
+                         <input type="text" id="block" name="block" onChange={handleChange} value={state.block} placeholder="amount of block..."/> {warn}
+                </Alert>
+                ):(
                 <Tooltip title={bloc} >
                         <input type="text" id="block" name="block" onChange={handleChange} value={state.block} placeholder="amount of block..."/> 
                 </Tooltip>
+                )}
                 </label><br></br><br></br>
                 
             </form>
@@ -114,7 +127,9 @@ const Defi = () => {
             ):(
                 <div>
                 
-                    Transaction  Sent.
+                <Alert variant="outlined" severity="success" >
+                        Transaction Sent.
+                </Alert>
                 
                 </div>
             )}

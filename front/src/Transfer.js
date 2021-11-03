@@ -4,10 +4,8 @@ import * as api from './api.js';
 import send from'./media/send.png';
 import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
-
+import Alert from '@mui/material/Alert';
 import Tooltip from '@mui/material/Tooltip';
-
-
 
 
 const Transfer = () => {
@@ -25,9 +23,10 @@ const Transfer = () => {
         });
     };
 
+
     const handleSubmit = async (event) => {
         event.preventDefault();
-
+        try {
         const client = await api.getClient();
         const address = cryptography.getAddressFromBase32Address(state.address);
         const tx = await client.transaction.create({
@@ -53,6 +52,9 @@ const Transfer = () => {
             amount: '',
            
         });
+    } catch(e) {
+        alert("Incorrect address");
+      }
     };
 
     const acc = JSON.parse(sessionStorage.getItem('Account'));
@@ -63,6 +65,7 @@ const Transfer = () => {
 `;
     const err = `You trying send more than you have.
 `;
+   
 
     return (
         <div>
@@ -72,15 +75,17 @@ const Transfer = () => {
                 <label>
                         <Tooltip title={reci}>
                         <input type="text" id="address" name="address" onChange={handleChange} value={state.address} placeholder="recipient address..."/> 
-                        </Tooltip>
+                        </Tooltip>     
                 </label><br></br><br></br>
         
                 <label>
                 {state.amount > acc.token.balance/100000000 ?(
-                <Tooltip title={err}>
-                        <input type="text" id="amount" name="amount" onChange={handleChange} value={state.amount} placeholder="amount..."/>
-                </Tooltip>
+                <Alert variant="outlined" severity="error" title={amou} >
+
+                        <input type="text" id="amount" name="amount" onChange={handleChange} value={state.amount} placeholder="amount..."/> {err}
+                </Alert>
                 ):(<Tooltip title={amou}>
+                    
                 <input type="text" id="amount" name="amount" onChange={handleChange} value={state.amount} placeholder="amount..."/>
                 </Tooltip>
                 )}
@@ -104,7 +109,9 @@ const Transfer = () => {
             ):(
                 <div>
                 
-                    Transaction  Sent.
+                <Alert variant="outlined" severity="success" >
+                        Transaction Sent.
+                </Alert>
                 
                 </div>
             )}
