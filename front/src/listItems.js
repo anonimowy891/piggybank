@@ -13,6 +13,13 @@ import {
   Route,
   NavLink
 } from "react-router-dom";
+import Account from'./media/Account.png';
+import SendPiggy from'./media/Send Piggy.png';
+import Transf from'./media/Transfer.png';
+import Unloc from'./media/Unloc.png';
+import Explore from'./media/Explore.png';
+
+
 
 
 
@@ -30,7 +37,16 @@ export const mainListItems = (
       <ListItemIcon>
         <AccountBoxIcon />
       </ListItemIcon>
-      <ListItemText primary="Account" />
+      <div style={{
+                display: "flex",
+                justifyContent: "left",
+                alignItems: "left"
+                }}>
+                        <img  src={Account} style={{
+                        minWidth: "100px",
+                        maxWidth: "150px",
+                        }}/>   
+                </div>
     </ListItem >
     </NavLink>
 
@@ -44,7 +60,16 @@ export const mainListItems = (
       <ListItemIcon>
         <SendIcon />
       </ListItemIcon>
-      <ListItemText primary="Send Transfer" />
+      <div style={{
+                display: "flex",
+                justifyContent: "left",
+                alignItems: "left"
+                }}>
+                        <img  src={Transf} style={{
+                        minWidth: "100px",
+                        maxWidth: "150px",
+                        }}/>   
+                </div>
     </ListItem>
     </NavLink>
 
@@ -58,7 +83,16 @@ export const mainListItems = (
       <ListItemIcon>
         <ScheduleSendIcon />
       </ListItemIcon>
-      <ListItemText primary="Send to PiggyBank" />
+      <div style={{
+                display: "flex",
+                justifyContent: "left",
+                alignItems: "left"
+                }}>
+                        <img  src={SendPiggy} style={{
+                        minWidth: "100px",
+                        maxWidth: "160px",
+                        }}/>   
+                </div>
     </ListItem>
     </NavLink>
 
@@ -72,7 +106,16 @@ export const mainListItems = (
       <ListItemIcon>
         <LockOpenIcon />
       </ListItemIcon>
-      <ListItemText primary="Unlock PiggyBank" />
+      <div style={{
+                display: "flex",
+                justifyContent: "left",
+                alignItems: "left"
+                }}>
+                        <img  src={Unloc} style={{
+                        minWidth: "100px",
+                        maxWidth: "150px",
+                        }}/>   
+                </div>
     </ListItem>
     </NavLink>
 
@@ -86,7 +129,16 @@ export const mainListItems = (
       <ListItemIcon>
         <TravelExploreIcon />
       </ListItemIcon>
-      <ListItemText primary="Explore Accounts" />
+      <div style={{
+                display: "flex",
+                justifyContent: "left",
+                alignItems: "left"
+                }}>
+                        <img  src={Explore} style={{
+                        minWidth: "100px",
+                        maxWidth: "150px",
+                        }}/>   
+                </div>
     </ListItem>
     </NavLink>
   </div>

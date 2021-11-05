@@ -17,6 +17,8 @@ import {
 } from "react-router-dom";
 
 import mainLogo from'./media/logo.png';
+import PiggyBank from './media/PiggyBank.png';
+
 
 const Sign = () => {
 
@@ -93,7 +95,17 @@ const newCredentials = () => {
                             position: "relative"
                         }}/>
           <Typography component="h1" variant="h5">
-          <br></br>Log in
+          <br></br>
+          <div style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center"
+                }}>
+                        <img  src={PiggyBank} style={{
+                        minWidth: "200px",
+                        maxWidth: "500px",
+                        }}/>   
+                </div>
           </Typography>
           <Box component="form" onSubmit={saveCredentialsToStorage} onChange={handleChange} value={state.passphrase} noValidate sx={{ mt: 1, width: 400,}}>
             <TextField

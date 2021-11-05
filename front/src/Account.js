@@ -4,8 +4,8 @@ import * as api from './api.js';
 import search from'./media/search.png';
 import Button from '@mui/material/Button';
 import PersonSearchIcon from '@mui/icons-material/PersonSearch';
-
 import Tooltip from '@mui/material/Tooltip';
+import Explore from'./media/Explore.png';
 
 
 const Account = () => {
@@ -41,7 +41,16 @@ const Account = () => {
 
     return (
         <div >
-            <h2>Explore</h2>
+            <div style={{
+                display: "flex",
+                justifyContent: "left",
+                alignItems: "left"
+                }}>
+                        <img  src={Explore} style={{
+                        minWidth: "200px",
+                        maxWidth: "220px",
+                        }}/>   
+                </div>
             <p>Get account details by address.</p>
             <form onSubmit={handleSubmit}>
                 <label>

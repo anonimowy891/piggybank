@@ -2,10 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { cryptography, } from '@liskhq/lisk-client';
 import * as api from './api.js';
 import unlock from'./media/unlock.png';
+import Unloc from'./media/Unloc.png';
 import {  nodeInfoContextDefaultValue } from './context';
 import Button from '@mui/material/Button';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 import CustomButton from '@mui/material/Button';
+import LinearProgress from '@mui/material/LinearProgress';
+
 
 
 
@@ -13,7 +16,8 @@ const Unlock = () => {
     const [state, updateState] = useState({
         address: '',
         passphrase: '',
-        transaction: 0
+        transaction: 0,
+        click: false
     });
 
     const acc = JSON.parse(sessionStorage.getItem('Account'));
@@ -43,6 +47,7 @@ const Unlock = () => {
             transaction: client.transaction.toJSON(tx),
             address: '',
             passphrase: '',
+            click: true
         });
     };
 
@@ -76,6 +81,7 @@ const Unlock = () => {
 if (acc.defi.end == 0){
     
         state.transaction = 0
+        state.click = false
 
 }else{
      if (acc.defi.end <= nodeInfoState.height)
@@ -86,6 +92,7 @@ if (acc.defi.end == 0){
             state.transaction = 0
             }}     
   });
+
 
 
 
@@ -104,7 +111,16 @@ if (acc.defi.end == 0){
        
         <div>
             
-            <h2>Unlock</h2>
+            <div style={{
+                display: "flex",
+                justifyContent: "left",
+                alignItems: "left"
+                }}>
+                        <img  src={Unloc} style={{
+                        minWidth: "200px",
+                        maxWidth: "200px",
+                        }}/>   
+                </div>
             <p>Liquidate your PiggyBank.</p>
             <p>You have {acc.defi.locked/100000000} PIG ready to unlock at block: {acc.defi.end}</p>
             {state.transaction ? (
@@ -123,7 +139,14 @@ if (acc.defi.end == 0){
                 <CustomButton disabled>Can't unlock</CustomButton>
                 </div>
             )}
-          
+            <br></br>
+            {state.click ? (
+                
+                <LinearProgress />
+            ):(
+                ""
+            )}
+
                 <div>
                     <div style={{
                     display: "flex",

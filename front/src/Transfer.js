@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { cryptography, transactions } from '@liskhq/lisk-client';
 import * as api from './api.js';
 import send from'./media/send.png';
+import Transf from'./media/Transfer.png';
 import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
 import Alert from '@mui/material/Alert';
@@ -69,7 +70,16 @@ const Transfer = () => {
 
     return (
         <div>
-            <h2>Transfer</h2>
+            <div style={{
+                display: "flex",
+                justifyContent: "left",
+                alignItems: "left"
+                }}>
+                        <img  src={Transf} style={{
+                        minWidth: "200px",
+                        maxWidth: "300px",
+                        }}/>   
+                </div>
             <p>Send tokens from one account to another.</p>
             <form onSubmit={handleSubmit}>
                 <label>

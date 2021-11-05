@@ -6,6 +6,8 @@ import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
 import Tooltip from '@mui/material/Tooltip';
 import Alert from '@mui/material/Alert';
+import SendPiggy from'./media/Send Piggy.png';
+
 
 
 
@@ -75,7 +77,16 @@ const Defi = () => {
 
     return (
         <div>
-            <h2>Send Piggy</h2>
+             <div style={{
+                display: "flex",
+                justifyContent: "left",
+                alignItems: "left"
+                }}>
+                        <img  src={SendPiggy} style={{
+                        minWidth: "200px",
+                        maxWidth: "300px",
+                        }}/>   
+                </div>
             <p>Send tokens to the PiggyBank you want.</p>
             <form onSubmit={handleSubmit}>
                 <label>

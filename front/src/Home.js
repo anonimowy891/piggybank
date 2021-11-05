@@ -1,6 +1,9 @@
 import React from 'react';
 import Typography from '@mui/material/Typography';
+import LinearProgress from '@mui/material/LinearProgress';
 import piggy from'./media/piggy.png';
+import Account from'./media/Account.png';
+
 
 
 
@@ -13,7 +16,16 @@ const Home =  () => {
     return (
 
       <div>
-        <h2>Account </h2>
+        <div style={{
+                display: "flex",
+                justifyContent: "left",
+                alignItems: "left"
+                }}>
+                        <img  src={Account} style={{
+                        minWidth: "200px",
+                        maxWidth: "250px",
+                        }}/>   
+                </div>
         <Typography sx={{
             marginTop: 2,
             
@@ -21,7 +33,13 @@ const Home =  () => {
         {!acc ? (
           <div>
             <br></br>
-          <pre>Wait a sec :D</pre>  
+          <LinearProgress />
+          <pre style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center"
+                }} >Wait a sec :D</pre>  
+          <LinearProgress /><br></br>
           </div>
         ) : (
           <div>
