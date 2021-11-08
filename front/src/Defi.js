@@ -75,6 +75,17 @@ const Defi = () => {
     const bloc = `Specify the lock time of your PIG tokens (in blocks). You can also lock PIG tokens for someone else by providing their address above, only if the recipient doesn't have anything in the piggybank yet. 1 block = 10sec. 1 day ~ 8640 blocks.
 `;  
 
+var time = state.block*10;
+var seconds = parseInt(time, 10);
+
+    var days = Math.floor(seconds / (3600*24));
+    seconds  -= days*3600*24;
+    var hrs   = Math.floor(seconds / 3600);
+    seconds  -= hrs*3600;
+    var mnts = Math.floor(seconds / 60);
+    seconds  -= mnts*60;
+
+
     return (
         <div>
              <div style={{
@@ -117,6 +128,7 @@ const Defi = () => {
                         <input type="text" id="block" name="block" onChange={handleChange} value={state.block} placeholder="amount of block..."/> 
                 </Tooltip>
                 )}
+                <p>Estimate time to unlock:  {days+" days, "+hrs+" Hrs, "+mnts+" Minutes, "+seconds+" Seconds"}</p>
                 </label><br></br><br></br>
                 
             </form>
