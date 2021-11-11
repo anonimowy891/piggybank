@@ -7,6 +7,11 @@ import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
 import Alert from '@mui/material/Alert';
 import Tooltip from '@mui/material/Tooltip';
+import Typography from '@mui/material/Typography';
+import {
+    Divider,
+  } from '@mui/material';
+
 
 
 const Transfer = () => {
@@ -80,7 +85,16 @@ const Transfer = () => {
                         maxWidth: "300px",
                         }}/>   
                 </div>
+                <Divider />
+                <Divider />
+             <Typography 
+         
+                    color="textSecondary"
+                    variant="body3"
+                >
             <p>Send tokens from one account to another.</p>
+            </Typography>
+
             <form onSubmit={handleSubmit}>
                 <label>
                         <Tooltip title={reci}>

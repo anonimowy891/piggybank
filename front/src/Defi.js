@@ -7,6 +7,10 @@ import SendIcon from '@mui/icons-material/Send';
 import Tooltip from '@mui/material/Tooltip';
 import Alert from '@mui/material/Alert';
 import SendPiggy from'./media/Send Piggy.png';
+import Typography from '@mui/material/Typography';
+import {
+    Divider,
+  } from '@mui/material';
 
 
 
@@ -98,7 +102,16 @@ var seconds = parseInt(time, 10);
                         maxWidth: "300px",
                         }}/>   
                 </div>
+                <Divider />
+                <Divider />
+                <Typography 
+         
+                    color="textSecondary"
+                    variant="body3"
+                >
             <p>Send tokens to the PiggyBank you want.</p>
+            </Typography>
+
             <form onSubmit={handleSubmit}>
                 <label>
                 <Tooltip title={reci}>
@@ -128,8 +141,14 @@ var seconds = parseInt(time, 10);
                         <input type="text" id="block" name="block" onChange={handleChange} value={state.block} placeholder="amount of block..."/> 
                 </Tooltip>
                 )}
+                <Typography 
+         
+                     color="textSecondary"
+                     variant="body3"
+                 >
                 <p>Estimate time to unlock:  {days+" days, "+hrs+" Hrs, "+mnts+" Minutes, "+seconds+" Seconds"}</p>
-                </label><br></br><br></br>
+                </Typography>
+                </label><br></br>
                 
             </form>
 

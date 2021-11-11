@@ -1,8 +1,11 @@
 import React from 'react';
 import Typography from '@mui/material/Typography';
-import LinearProgress from '@mui/material/LinearProgress';
 import piggy from'./media/piggy.png';
 import Account from'./media/Account.png';
+import {
+  CardHeader,
+  Divider,
+} from '@mui/material';
 
 
 
@@ -26,30 +29,33 @@ const Home =  () => {
                         maxWidth: "250px",
                         }}/>   
                 </div>
-        <Typography sx={{
+                <Divider />
+                <Divider />
+         <Typography sx={{
             marginTop: 2,
             
           }}>
-        {!acc ? (
           <div>
-            <br></br>
-          <LinearProgress />
-          <pre style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center"
-                }} >Wait a sec :D</pre>  
-          <LinearProgress /><br></br>
+          <CardHeader
+          subheader={add}
+          title="Address:"
+        />
+        <CardHeader
+          subheader={acc.address}
+          title="Binary Address::"
+        />
+        <CardHeader
+          subheader={acc.token.balance/100000000 + " PIG"} 
+          title="Balance:"
+        />
+        <CardHeader
+          subheader={acc.defi.locked/100000000 + " PIG"} 
+          title="PiggyBank balance:"
+        />
           </div>
-        ) : (
-          <div>
-          Address: {add}<br></br><br></br>
-          Binary Address: {acc.address}<br></br><br></br>
-          Balance: {acc.token.balance/100000000} PIG<br></br><br></br>
-          PiggyBank balance: {acc.defi.locked/100000000} PIG<br></br>  <br></br>
-          </div>
-        )}
+          
         </Typography>
+        
         <div style={{
                     display: "flex",
                     justifyContent: "center",

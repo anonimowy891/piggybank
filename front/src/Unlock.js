@@ -8,6 +8,10 @@ import Button from '@mui/material/Button';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 import CustomButton from '@mui/material/Button';
 import LinearProgress from '@mui/material/LinearProgress';
+import Typography from '@mui/material/Typography';
+import {
+    Divider,
+  } from '@mui/material';
 
 
 
@@ -121,11 +125,26 @@ if (acc.defi.end == 0){
                         maxWidth: "200px",
                         }}/>   
                 </div>
+                <Divider />
+                <Divider />
+                <Typography 
+         
+                    color="textSecondary"
+                    variant="body3"
+                >
             <p>Liquidate your PiggyBank.</p>
             <p>You have {acc.defi.locked/100000000} PIG ready to unlock at block: {acc.defi.end}</p>
+            </Typography>
+            
             {state.transaction ? (
                 <div>
-                <p>Click unlock and wait few seconds.</p>
+                    <Typography 
+         
+                    color="textSecondary"
+                    variant="body3"
+                    >
+                     <p>Click unlock and wait few seconds.</p>
+                    </Typography>
                 <Button variant="contained" onClick={handleSubmit} color="success" endIcon={<LockOpenIcon />}>
                  Unlock 
                 </Button>
@@ -133,7 +152,14 @@ if (acc.defi.end == 0){
             ):(
                 <div>
                 {acc.defi.end ? (
-                <p>Estimate time to unlock:  {days+" days, "+hrs+" Hrs, "+mnts+" Minutes, "+seconds+" Seconds"}</p>
+                          <Typography 
+         
+                          color="textSecondary"
+                          variant="body3"
+                          >
+                            <p>Estimate time to unlock:  {days+" days, "+hrs+" Hrs, "+mnts+" Minutes, "+seconds+" Seconds"}</p>
+                          </Typography>
+                
                 ):("")
                 }
                 <CustomButton disabled>Can't unlock</CustomButton>

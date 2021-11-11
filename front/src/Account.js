@@ -6,6 +6,10 @@ import Button from '@mui/material/Button';
 import PersonSearchIcon from '@mui/icons-material/PersonSearch';
 import Tooltip from '@mui/material/Tooltip';
 import Explore from'./media/Explore.png';
+import Typography from '@mui/material/Typography';
+import {
+    Divider,
+  } from '@mui/material';
 
 
 const Account = () => {
@@ -51,7 +55,16 @@ const Account = () => {
                         maxWidth: "220px",
                         }}/>   
                 </div>
-            <p>Get account details by address.</p>
+                <Divider />
+                <Divider />
+                <Typography 
+         
+                    color="textSecondary"
+                    variant="body3"
+                    >
+                     <p>Get account details by address.</p>
+                </Typography>
+
             <form onSubmit={handleSubmit}>
                 <label>
                 <Tooltip title={addr}>
@@ -70,14 +83,20 @@ const Account = () => {
             </div>
     ):(
         <div >
+            <Typography 
+         
+         color="textSecondary"
+         variant="body3"
+         >
                 <p>Address: {add}</p> 
                 <p>Binary Address: {state.account.address}</p> 
                 <p>Balance: {JSON.stringify(state.account.token.balance/100000000, null, 2)} PIG</p> 
                 <p>PiggyBank balance: {JSON.stringify(state.account.defi.locked/100000000, null, 2)} PIG</p> 
                 <p>Ready to unlock at block: {JSON.stringify(state.account.defi.end, null, 2)}</p> 
+            </Typography>
             </div>
     )}
-
+          
 
 
 

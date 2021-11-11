@@ -29,6 +29,7 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import LogoutIcon from '@mui/icons-material/Logout';
 import Chip from '@mui/material/Chip';
 import { mainListItems } from './listItems';
+import CircularProgress from '@mui/material/CircularProgress';
 
 import Account from './Account';
 import Home from './Home';
@@ -200,6 +201,7 @@ const classes = useStyles();
     fetchData();
   }, []);
 
+  const acc = JSON.parse(sessionStorage.getItem('Account'));
 
   return (
     
@@ -264,7 +266,16 @@ const classes = useStyles();
             </IconButton>
           </Toolbar>
           <Divider />
-          <List >{mainListItems}</List>
+          {!acc ? (
+          <div >
+          <br></br>
+          <CircularProgress sx={{ marginLeft:2, marginTop:3}}/><br></br><br></br><br></br>
+          <CircularProgress sx={{ marginLeft:2}}/><br></br><br></br><br></br>
+          <CircularProgress sx={{ marginLeft:2}}/><br></br><br></br><br></br>
+          <CircularProgress sx={{ marginLeft:2}}/><br></br><br></br><br></br>
+          <CircularProgress sx={{ marginLeft:2}}/><br></br><br></br><br></br>
+        </div>
+          ):(<List >{mainListItems}</List>)}
         </Drawer>
         <Box
           component="main"
