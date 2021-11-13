@@ -42,7 +42,7 @@ const Home =  () => {
         />
         <CardHeader
           subheader={acc.address}
-          title="Binary Address::"
+          title="Binary Address:"
         />
         <CardHeader
           subheader={acc.token.balance/100000000 + " PIG"} 
