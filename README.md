@@ -6,7 +6,7 @@ Weak hands never be a millionaire.
 ![alt text](https://github.com/anonimowy891/piggybank/blob/main/front/src/media/piggy.png)
 
 
-Project buil for Lisk Hackathon2.
+Project buil for Lisk Hackathon.
 
 Try demo -> http://projects.hopto.org:3000
 
